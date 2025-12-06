@@ -1,0 +1,268 @@
+/* ================================
+   VARIÁVEIS DO TEMA
+   ================================ */
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+
+    --danger: #dc2626;
+    --danger-hover: #b91c1c;
+
+    --edit: #3b82f6;
+    --edit-hover: #2563eb;
+
+    --success: #16a34a;
+
+    --bg: #0f172a;
+    --bg-soft: #020617;
+
+    --card-bg: rgba(15, 23, 42, 0.9);
+
+    --border: #1e293b;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+
+    --radius: 16px;
+
+    --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+
+    --transition: 0.18s ease-out;
+}
+
+/* ================================
+   RESET & BODY
+   ================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #1e293b 0%, #0f172a 55%, #000 100%);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* ================================
+   PAGE CENTER
+   ================================ */
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px;
+}
+
+/* ================================
+   CARD
+   ================================ */
+.card {
+    width: 100%;
+    max-width: 920px;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius);
+    padding: 20px 26px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.card--narrow {
+    max-width: 460px;
+}
+
+/* ================================
+   TITULOS & CABEÇALHO
+   ================================ */
+h1 {
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+/* ================================
+   BOTÕES
+   ================================ */
+button {
+    border: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+/* --- primário --- */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+/* --- secundário --- */
+.btn-secondary {
+    background: #1e293b;
+    color: var(--muted);
+    border: 1px solid #334155;
+}
+.btn-secondary:hover {
+    background: #334155;
+    color: white;
+}
+
+/* --- editar --- */
+.btn-edit {
+    background: var(--edit);
+    color: white;
+    margin-right: 6px;
+}
+.btn-edit:hover {
+    background: var(--edit-hover);
+    transform: translateY(-1px);
+}
+
+/* --- excluir --- */
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+.btn-danger:hover {
+    background: var(--danger-hover);
+    transform: translateY(-1px);
+}
+
+/* ================================
+   MENSAGEM GLOBAL
+   ================================ */
+#mensagem {
+    margin-bottom: 10px;
+    min-height: 20px;
+    font-size: 0.9rem;
+}
+
+#mensagem.ok {
+    color: var(--success);
+}
+
+#mensagem.erro {
+    color: var(--danger);
+}
+
+/* ================================
+   FORMULÁRIO
+   ================================ */
+.field {
+    margin-bottom: 14px;
+}
+
+label {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #0b1120;
+    color: var(--text);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+small.hint {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 2px;
+    display: block;
+}
+
+.field-error {
+    color: var(--danger);
+    font-size: 0.8rem;
+    margin-top: 4px;
+    display: block;
+}
+
+/* ================================
+   TABELA
+   ================================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 0.95rem;
+}
+
+thead {
+    background: #1e293b;
+}
+
+th, td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #1e293b;
+}
+
+th {
+    font-weight: 600;
+    text-align: left;
+}
+
+tbody tr {
+    transition: var(--transition);
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateY(-1px);
+}
+
+.empty {
+    text-align: center;
+    padding: 22px;
+    color: var(--muted);
+}
+
+/* ================================
+   RESPONSIVIDADE
+   ================================ */
+@media (max-width: 760px) {
+    .card {
+        padding: 16px;
+    }
+
+    th:nth-child(4),
+    td:nth-child(4),
+    th:nth-child(5),
+    td:nth-child(5) {
+        display: none; /* esconde idade e salário em telas pequenas */
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+}
