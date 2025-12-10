@@ -1,7 +1,7 @@
 package org.example;
 
 import net.jqwik.api.*;
-import org.example.crud.Funcionario;
+import org.example.domain.model.Funcionario;
 import org.junit.jupiter.api.Assertions;
 
 public class FuncionarioTest {

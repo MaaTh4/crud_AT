@@ -181,12 +181,33 @@
             msg = raw;
         }
 
+        // limpar mensagens antigas de campo
+        document.querySelectorAll(".field-error").forEach(el => el.textContent = "");
+
+        msg = (msg || "").trim();
+
+        // CASO ESPECÍFICO: Bad Request genérico (por exemplo erro de salário)
+        if (msg.toLowerCase() === "bad request" || msg === "") {
+            const salarioVal = Number(document.getElementById("salario").value);
+
+            // se o salário é menor que 1300, mostramos mensagem amigável no campo
+            if (!Number.isNaN(salarioVal) && salarioVal < 1300) {
+                document.getElementById("erro-salario").textContent = "Salário mínimo é 1300.00";
+                return;
+            }
+
+            // se não for claramente salário, mensagem genérica no topo
+            msgDiv.textContent = "Erro na requisição. Verifique os dados informados.";
+            msgDiv.classList.add("erro");
+            return;
+        }
+
         // fallback do Spring Boot (errozão HTML/JSON gigante)
         if (msg.length > 120) {
             msg = "Erro na requisição. Verifique os dados.";
         }
 
-        // erros específicos por campo
+        // erros específicos por campo (quando a mensagem vem legível do backend)
         const mapa = [
             ["CPF", "cpf"],
             ["Nome", "nome"],
@@ -202,7 +223,7 @@
             }
         }
 
-        // erro genérico
+        // erro genérico no topo
         msgDiv.textContent = msg;
         msgDiv.classList.add("erro");
     }

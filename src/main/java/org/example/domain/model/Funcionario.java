@@ -1,4 +1,4 @@
-package org.example.crud;
+package org.example.domain.model;
 
 public class Funcionario {
 
@@ -8,11 +8,11 @@ public class Funcionario {
     private Integer idade;   // pode ser nulo
     private double salario;
 
-    // === Construtor VAZIO – OBRIGATÓRIO pro Spring/Jackson ===
+
     public Funcionario() {
     }
 
-    // Construtor completo (útil para testes/unitários)
+    // Construtor completo
     public Funcionario(int id, String nome, String cpf, Integer idade, double salario) {
         setId(id);
         setNome(nome);

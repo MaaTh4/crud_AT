@@ -1,6 +1,10 @@
 package org.example.controller;
 
-import org.example.crud.*;
+import org.example.domain.model.Funcionario;
+import org.example.domain.usecases.CriarFuncionario;
+import org.example.domain.usecases.DeletarFuncionario;
+import org.example.domain.usecases.EditarFuncionario;
+import org.example.domain.usecases.VerInfosFuncionario;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

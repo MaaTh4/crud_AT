@@ -1,4 +1,6 @@
-package org.example.crud;
+package org.example.domain.usecases;
+
+import org.example.domain.model.Funcionario;
 
 import java.util.List;
 import java.util.Optional;
