@@ -18,7 +18,6 @@ public class DriverFactory {
 
             ChromeOptions options = new ChromeOptions();
 
-            // Se foi passado -Dheadless=true no Maven, roda em modo headless
             boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
             if (headless) {
                 options.addArguments("--headless=new");
@@ -31,7 +30,6 @@ public class DriverFactory {
             driver = new ChromeDriver(options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-            // Em headless não adianta maximizar, então só faz isso quando não for headless
             if (!headless) {
                 driver.manage().window().maximize();
             }
