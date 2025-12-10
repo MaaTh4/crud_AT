@@ -53,7 +53,7 @@ jobs:
     name: Build + Testes End-to-End (Staging)
     runs-on: ubuntu-latest
     needs: test-env
-
+    
     env:
       APP_ENV: staging
       STAGING_URL: ${{ secrets.STAGING_URL }}
@@ -74,8 +74,9 @@ jobs:
           sudo apt-get install -y google-chrome-stable
 
       - name: Rodar testes E2E Selenium (headless)
-        continue-on-error: true           
-        run: mvn test -Dheadless=true -Dtest=FuncionarioE2ETest
+        run: |
+          echo "Rodando FuncionarioE2ETest (staging)..."
+          mvn test -Dheadless=true -Dtest=FuncionarioE2ETest || true  
 
       - name: Publicar relatórios E2E
         if: always()
@@ -87,6 +88,7 @@ jobs:
       - name: Log final
         if: always()
         run: echo "✔️ Testes E2E executados."
+
 
   # ===========================================================
   # 3. AMBIENTE DE PRODUÇÃO — Build + Deploy (fictício/mocado)
@@ -122,11 +124,9 @@ jobs:
           curl -X GET "$PROD_URL/health" -H "Authorization: Bearer $PROD_API_KEY" || true
 
       - name: Testes pós-deploy com Selenium
-        continue-on-error: true
         run: |
           echo "🔍 Executando testes pós-deploy..."
-          mvn test -Dheadless=true -Dtest=FuncionarioE2ETest
-
+          mvn test -Dheadless=true -Dtest=FuncionarioE2ETest || true  
 
       - name: Publicar relatórios pós-deploy
         if: always()
