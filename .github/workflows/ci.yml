@@ -9,7 +9,7 @@ on:
 
 jobs:
   # ===========================================================
-  # 1. AMBIENTE DE TESTES — Build + Testes Unitários, Fuzz, Resiliência
+  # 1. AMBIENTE DE TESTES — Build + Testes Unitários, Fuzz, Resiliência.
   # ===========================================================
   test-env:
     name: Build + Testes (Unitários, Fuzz, Resiliência)
