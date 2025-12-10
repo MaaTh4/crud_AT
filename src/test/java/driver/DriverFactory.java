@@ -13,20 +13,28 @@ public class DriverFactory {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-
+            // Faz o download/configuração do driver
             WebDriverManager.chromedriver().setup();
+
             ChromeOptions options = new ChromeOptions();
 
-            // HEADLESS PARA CI/CD
-            options.addArguments("--headless=new");
-            options.addArguments("--disable-gpu");
-            options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");
+            // Se foi passado -Dheadless=true no Maven, roda em modo headless
+            boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+            if (headless) {
+                options.addArguments("--headless=new");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--window-size=1366,768");
+            }
 
             driver = new ChromeDriver(options);
-
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-            driver.manage().window().maximize();
+
+            // Em headless não adianta maximizar, então só faz isso quando não for headless
+            if (!headless) {
+                driver.manage().window().maximize();
+            }
         }
         return driver;
     }
