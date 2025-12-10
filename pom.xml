@@ -21,8 +21,11 @@
 
     <properties>
         <!-- Você tinha 25, mantive. Se seu JDK for 17 ou 21, troca aqui -->
-        <java.version>25</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+         <java.version>25</java.version>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+         <maven.compiler.source>19</maven.compiler.source>
+         <maven.compiler.target>19</maven.compiler.target>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
